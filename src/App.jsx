@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
+  const increase = (value) => {
+    dispatch({ type: "INCREMENT", payload: value });
+  };
+  const decrease = (value) => {
+    dispatch({ type: "DECREMENT", payload: value });
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => increase(1)}>증가</button>
+      <button onClick={() => increase(5)}>5증가</button>
+      <button onClick={() => increase(10)}>10증가</button>
+      <button onClick={() => decrease(1)}>1감소</button>
+      <button onClick={() => decrease(5)}>5감소</button>
+      <button onClick={() => decrease(10)}>10감소</button>
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -26,7 +26,6 @@ function App() {
 
   return (
     <Container
-      maxWidth={isMobile ? "xl" : "sm"}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -37,8 +36,6 @@ function App() {
       <Paper
         sx={{
           p: isMobile ? 5 : 15,
-          width: isMobile ? "100%" : "auto",
-          maxHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

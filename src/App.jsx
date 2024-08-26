@@ -7,11 +7,13 @@ import {
   Grid,
   Paper,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 function App() {
   const count = useSelector((state) => state.count);
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery("(max-width:600px)");
   const increase = (value) => {
     dispatch({ type: "INCREMENT", payload: value });
   };
@@ -24,7 +26,7 @@ function App() {
 
   return (
     <Container
-      maxWidth="sm"
+      maxWidth={isMobile ? "xl" : "sm"}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -34,7 +36,8 @@ function App() {
     >
       <Paper
         sx={{
-          p: 15,
+          p: isMobile ? 5 : 15,
+          width: isMobile ? "100%" : "auto",
           maxHeight: "100vh",
           display: "flex",
           flexDirection: "column",
@@ -83,6 +86,5 @@ function App() {
     </Container>
   );
 }
-// #FF5733'
 
 export default App;
